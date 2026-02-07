@@ -221,3 +221,15 @@ function switchView(view) {
                         ${infoData.emergency.map(e => `<div>${e}</div>`).join('')}
                     </div>
                 </section>
+                <section>
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">旅遊小貼士</h3>
+                    <div class="bg-white p-4 rounded-xl card-shadow text-sm space-y-2">
+                        ${infoData.tips.map(t => `<div class="flex items-start gap-2"><span class="text-yellow-500">💡</span> <span>${t}</span></div>`).join('')}
+                    </div>
+                </section>
+            </div>
+        `;
+    }
+}
+
+init();
