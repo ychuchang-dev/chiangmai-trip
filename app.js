@@ -510,7 +510,7 @@ const infoData = {
             title: "Baan Kang Wat 藝術村攻略",
             desc: "森林系手作藝術村 | 咖啡、雜貨、小吃",
             url: "https://www.travelerluxe.com/article/desc/230009060",
-            image: "./article_art.jpg"
+            image: "./articleart.jpg"
         }
     ]
 };
