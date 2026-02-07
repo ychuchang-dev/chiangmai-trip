@@ -35,7 +35,7 @@ const itineraryData = [
                     reviews: "1,800",
                     price: "฿2,500+",
                     type: "四星級飯店",
-                    image: "./hotel1.jpg"
+                    image: "./hotel_eastin.jpg"
                 },
                 nav: "Eastin Tan Hotel Chiang Mai" 
             },
@@ -112,7 +112,7 @@ const itineraryData = [
                     reviews: "1,800",
                     price: "฿2,500+",
                     type: "四星級飯店",
-                    image: "./hotel1.jpg"
+                    image: "./hotel_eastin.jpg"
                 },
                 nav: "Eastin Tan Hotel Chiang Mai",
                 desc: "正式 Check-in 進房。飯店早餐評價很好。",
@@ -318,7 +318,7 @@ const itineraryData = [
                     reviews: "950",
                     price: "฿3,000+",
                     type: "度假村",
-                    image: "./hotel2.jpg"
+                    image: "./hotel_parc.jpg"
                 },
                 nav: "Parc Borough City Resort",
                 desc: "入住第二間飯店。這間走度假村風格，比較安靜。",
@@ -482,8 +482,16 @@ const itineraryData = [
 const infoData = {
     flights: ["2/16 BR257 TPE-CNX 07:20-10:35", "2/20 PG220 CNX-BKK 21:40-23:05", "2/21 BR206 BKK-TPE 02:15-06:50"],
     hotels: [
-        { name: "Eastin Tan Hotel", address: "Maya 百貨對面, 尼曼區", tel: "請查看訂房憑證" },
-        { name: "Parc Borough City Resort", address: "近機場, Mahidol Rd", tel: "請查看訂房憑證" }
+        { 
+            name: "Eastin Tan Hotel Chiang Mai", 
+            address: "171 Huay Kaew Rd, Suthep, Mueang Chiang Mai District, Chiang Mai 50200", 
+            image: "./hotel_eastin.jpg"
+        },
+        { 
+            name: "Parc Borough City Resort", 
+            address: "223 Mahidol Rd, Tambon Hai Ya, อ.เมือง, Chiang Mai 50100", 
+            image: "./hotel_parc.jpg"
+        }
     ],
     emergency: ["觀光警察: 1155", "救護車: 1669", "駐泰代表處: +66-2-119-3555"],
     tips: [
@@ -492,7 +500,6 @@ const infoData = {
         "小費：按摩約 50-100 泰銖，床頭小費 20 泰銖",
         "電壓：220V (插座通用)"
     ],
-    // 新增：預約連結與攻略
     links: [
         {
             title: "精靈農場 & 清邁夜間野生動物園",
@@ -510,7 +517,7 @@ const infoData = {
             title: "Baan Kang Wat 藝術村攻略",
             desc: "森林系手作藝術村 | 咖啡、雜貨、小吃",
             url: "https://www.travelerluxe.com/article/desc/230009060",
-            image: "./articleart.jpg"
+            image: "./article_art.jpg"
         }
     ]
 };
@@ -526,6 +533,24 @@ function init() {
     } catch (e) {
         console.error("Error starting app:", e);
     }
+}
+
+// 複製到剪貼簿功能
+window.copyToClipboard = function(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        // 簡單的提示 (Toast)
+        const toast = document.createElement('div');
+        toast.textContent = "地址已複製！";
+        toast.className = "fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-full text-sm shadow-lg z-50 transition-opacity duration-300";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => document.body.removeChild(toast), 300);
+        }, 2000);
+    }).catch(err => {
+        console.error('複製失敗:', err);
+        alert('複製失敗，請手動複製');
+    });
 }
 
 function renderDateSelector() {
@@ -591,7 +616,7 @@ function renderItinerary(index) {
         const noteHtml = event.note ? 
             `<p class="text-xs text-red-500 mt-2 flex items-start gap-1"><span class="font-bold">!</span> ${event.note}</p>` : '';
 
-        // 推薦清單 (點評版)
+        // 推薦清單
         const recommendHtml = event.recommend ? 
             `<div class="mt-3 bg-orange-50 p-3 rounded-lg border border-orange-100">
                 <p class="text-xs text-orange-600 font-bold mb-2 flex items-center gap-1">
@@ -622,7 +647,7 @@ function renderItinerary(index) {
                 </div>
              </div>` : '';
 
-        // 導航按鈕 (本地圖片 + 替代文字)
+        // 導航按鈕
         let navHtml = '';
         if (event.nav) {
             const navLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.nav)}`;
@@ -709,7 +734,6 @@ window.switchView = function(view) {
         tabItinerary.classList.add('text-gray-400');
         if(header) header.classList.add('hidden');
         
-        // 渲染資訊頁 (新增預約連結區塊)
         container.innerHTML = `
             <div class="space-y-6 pt-4">
                 <section>
@@ -733,17 +757,31 @@ window.switchView = function(view) {
                 </section>
 
                 <section>
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">住宿資訊</h3>
+                    <div class="space-y-4">
+                        ${infoData.hotels.map(h => `
+                            <div class="bg-white rounded-xl card-shadow overflow-hidden">
+                                <img src="${h.image}" class="w-full h-32 object-cover" onerror="this.src='https://placehold.co/600x400?text=Hotel'">
+                                <div class="p-4">
+                                    <div class="font-bold text-gray-800 text-base mb-2">${h.name}</div>
+                                    <div class="bg-gray-50 p-2 rounded text-xs text-gray-500 font-mono break-all mb-3">${h.address}</div>
+                                    <button onclick="copyToClipboard('${h.address}')" class="w-full py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                                        複製地址 (Grab可用)
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <section>
                     <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">航班資訊</h3>
                     <div class="bg-white p-4 rounded-xl card-shadow text-sm space-y-2">
                         ${infoData.flights.map(f => `<div class="flex items-center gap-2"><span class="text-lg">✈️</span> ${f}</div>`).join('')}
                     </div>
                 </section>
-                <section>
-                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">住宿資訊</h3>
-                    <div class="bg-white p-4 rounded-xl card-shadow text-sm space-y-3">
-                        ${infoData.hotels.map(h => `<div><div class="font-bold text-gray-800 text-base">${h.name}</div><div class="text-gray-500 text-xs mt-1">${h.address}</div></div>`).join('<hr class="my-2 border-gray-100">')}
-                    </div>
-                </section>
+
                 <section>
                     <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">緊急聯絡</h3>
                     <div class="bg-white p-4 rounded-xl card-shadow text-sm space-y-2 border-l-4 border-red-400">
