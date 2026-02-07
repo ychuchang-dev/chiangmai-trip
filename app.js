@@ -278,6 +278,11 @@ function init() {
     }
 }
 
+// 顯示泰文手指卡
+window.showThaiCard = function(thaiText, meaning) {
+    alert(`${meaning}：\n\n${thaiText}`);
+}
+
 window.copyToClipboard = function(text) {
     navigator.clipboard.writeText(text).then(() => {
         const toast = document.createElement('div');
@@ -459,6 +464,41 @@ window.switchView = function(view) {
         header.classList.add('hidden');
         container.innerHTML = `
             <div class="space-y-6 pt-4">
+                
+                <section>
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">🗣️ 點餐/求生手指卡</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="showThaiCard('ไม่เผ็ด (Mai Phet)', '不要辣')" class="bg-white p-3 rounded-xl card-shadow flex items-center gap-3 active:scale-95 transition-transform">
+                            <div class="bg-red-100 text-2xl p-2 rounded-full">🌶️</div>
+                            <div class="text-left">
+                                <div class="font-bold text-gray-800">不要辣</div>
+                                <div class="text-xs text-gray-400">Mai Phet</div>
+                            </div>
+                        </button>
+                        <button onclick="showThaiCard('ห้องน้ำอยู่ที่ไหน (Hong Nam Yu Tee Nai)', '廁所在哪裡')" class="bg-white p-3 rounded-xl card-shadow flex items-center gap-3 active:scale-95 transition-transform">
+                            <div class="bg-blue-100 text-2xl p-2 rounded-full">🚻</div>
+                            <div class="text-left">
+                                <div class="font-bold text-gray-800">廁所在哪</div>
+                                <div class="text-xs text-gray-400">Hong Nam...</div>
+                            </div>
+                        </button>
+                        <button onclick="showThaiCard('เท่าไหร่ (Tao Rai)', '多少錢')" class="bg-white p-3 rounded-xl card-shadow flex items-center gap-3 active:scale-95 transition-transform">
+                            <div class="bg-yellow-100 text-2xl p-2 rounded-full">💸</div>
+                            <div class="text-left">
+                                <div class="font-bold text-gray-800">多少錢</div>
+                                <div class="text-xs text-gray-400">Tao Rai</div>
+                            </div>
+                        </button>
+                        <button onclick="showThaiCard('ขอบคุณ (Khob Khun)', '謝謝')" class="bg-white p-3 rounded-xl card-shadow flex items-center gap-3 active:scale-95 transition-transform">
+                            <div class="bg-green-100 text-2xl p-2 rounded-full">🙏</div>
+                            <div class="text-left">
+                                <div class="font-bold text-gray-800">謝謝</div>
+                                <div class="text-xs text-gray-400">Khob Khun</div>
+                            </div>
+                        </button>
+                    </div>
+                </section>
+
                 <section>
                     <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">📌 行程預約與攻略</h3>
                     <div class="space-y-3">
@@ -476,6 +516,7 @@ window.switchView = function(view) {
                         `).join('')}
                     </div>
                 </section>
+
                 <section>
                     <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">住宿資訊</h3>
                     <div class="space-y-4">
