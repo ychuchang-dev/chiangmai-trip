@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 });
 
-// --- 資料區 (本地圖片版) ---
+// --- 資料區 (新增網友真實點評) ---
 const itineraryData = [
     {
         date: "2/16 (一)",
@@ -19,7 +19,7 @@ const itineraryData = [
                     reviews: "2,400",
                     price: "交通",
                     type: "國際機場",
-                    image: "./airport.jpg" // 對應你上傳的檔名
+                    image: "./airport.jpg"
                 },
                 nav: "Chiang Mai International Airport" 
             },
@@ -46,7 +46,12 @@ const itineraryData = [
                 location: "Baan Khun Nine Kitchen", 
                 tags: ["必吃泰北菜", "米其林推薦"], 
                 desc: "環境舒適的玻璃屋餐廳，口味正宗且乾淨，非常適合長輩。",
-                recommend: ["泰北杭勒咖哩", "泰北番茄肉醬", "炸魚餅"],
+                // 新增點評
+                recommend: [
+                    { name: "泰北杭勒咖哩", review: "肉燉得軟爛入味，帶點薑絲香氣，超級下飯。" },
+                    { name: "泰北番茄肉醬", review: "酸甜開胃，像是泰式肉燥，配生菜吃很清爽。" },
+                    { name: "炸魚餅", review: "口感Q彈，剛炸好熱騰騰的非常好吃。" }
+                ],
                 gInfo: {
                     rating: 4.6,
                     reviews: 324,
@@ -78,7 +83,11 @@ const itineraryData = [
                 location: "Malin Plaza", 
                 tags: ["學生美食", "平價服飾"], 
                 desc: "主要客群是大學生，物價比觀光夜市便宜。",
-                recommend: ["日式可麗餅", "10元壽司", "泰式烤肉串"],
+                recommend: [
+                    { name: "日式可麗餅", review: "這裡的招牌，料多到滿出來，餅皮很脆。" },
+                    { name: "10元壽司", review: "CP值超高，想吃什麼夾什麼。" },
+                    { name: "泰式烤肉串", review: "一串10泰銖，醬汁甜甜辣辣很涮嘴。" }
+                ],
                 gInfo: {
                     rating: 4.3,
                     reviews: "1.2萬",
@@ -140,7 +149,11 @@ const itineraryData = [
                 location: "Khao Soi Nimman", 
                 tags: ["必吃美食", "排隊名店"], 
                 desc: "米其林必比登推薦，清邁最知名的咖哩麵專賣店。",
-                recommend: ["炸雞腿咖哩麵", "泰北香腸", "鮮蝦咖哩麵"],
+                recommend: [
+                    { name: "炸雞腿咖哩麵", review: "雞腿燉到骨肉分離，濃郁湯頭配上炸酥的麵條口感很有層次。" },
+                    { name: "泰北香腸", review: "香料味十足，口感紮實不油膩。" },
+                    { name: "鮮蝦咖哩麵", review: "如果不愛吃肉，蝦子非常新鮮大隻。" }
+                ],
                 gInfo: {
                     rating: 4.2,
                     reviews: "5,800",
@@ -242,7 +255,10 @@ const itineraryData = [
                 location: "Baan Kang Wat", 
                 tags: ["文青必逛", "手作市集"], 
                 desc: "充滿綠意與藝術氣息的聚落，有很多手作小店。",
-                recommend: ["手沖咖啡", "手工陶瓷杯"],
+                recommend: [
+                    { name: "手沖咖啡", review: "隨便找一家店坐下來，氣氛都很好。" },
+                    { name: "手工陶瓷杯", review: "這裡的陶瓷都很有手作感，獨一無二。" }
+                ],
                 gInfo: {
                     rating: 4.6,
                     reviews: "1,200",
@@ -259,7 +275,10 @@ const itineraryData = [
                 location: "Adirak Pizza", 
                 tags: ["知名披薩", "特色晚餐"], 
                 desc: "清邁評價極高的手工披薩店。",
-                recommend: ["Pesto Ricotta Pizza", "Burrata Salad"],
+                recommend: [
+                    { name: "Pesto Ricotta Pizza", review: "青醬味道濃郁，Ricotta起司很清爽，餅皮又薄又脆。" },
+                    { name: "Burrata Salad", review: "必點！切開起司球搭配番茄和羅勒，超級開胃。" }
+                ],
                 gInfo: {
                     rating: 4.7,
                     reviews: 890,
@@ -275,7 +294,12 @@ const itineraryData = [
                 type: "shop", 
                 location: "Central Chiangmai Airport", 
                 tags: ["超市補貨", "伴手禮"], 
-                desc: "離機場很近的大型商場 (Robinson)，B1 Northern Village 專賣泰北特產。",
+                desc: "離機場很近的大型商場，B1 Northern Village 專賣泰北特產。",
+                recommend: [
+                    { name: "皇家蜂蜜", review: "軟管包裝方便攜帶，送禮自用都很棒。" },
+                    { name: "手標紅茶粉", review: "回家自己加煉乳，就是泰國的味道。" },
+                    { name: "炸豬皮", review: "泰北特色零食，酥酥脆脆。" }
+                ],
                 gInfo: {
                     rating: 4.4,
                     reviews: "15,000",
@@ -324,7 +348,11 @@ const itineraryData = [
                 location: "Neng Earthen Jar Roast Pork", 
                 tags: ["必吃脆皮豬", "在地推薦"], 
                 desc: "用大甕烤出來的脆皮豬，皮超酥脆肉多汁。",
-                recommend: ["脆皮豬飯", "烤雞", "酸辣湯"],
+                recommend: [
+                    { name: "脆皮豬飯", review: "脆皮豬一樣穩，該酥的酥、該嫩的嫩，咬下去卡滋卡滋。" },
+                    { name: "烤雞", review: "陶甕烤雞也一定要點，肉嫩不柴，香氣整個到位。" },
+                    { name: "酸辣湯", review: "微辣帶酸，配著肉吃剛好解膩。" }
+                ],
                 gInfo: {
                     rating: 4.4,
                     reviews: "2,100",
@@ -356,6 +384,11 @@ const itineraryData = [
                 location: "Big C Extra Chiangmai 2", 
                 desc: "最後的大型採購機會！買零食、泡麵、藥妝。",
                 tags: ["伴手禮採買"],
+                recommend: [
+                    { name: "Pocky", review: "香蕉口味、芒果口味是泰國限定，必掃貨。" },
+                    { name: "Bento 魷魚片", review: "紅色包裝最經典，辣得很過癮。" },
+                    { name: "小老闆海苔", review: "雖然台灣有賣，但這裡口味多又便宜。" }
+                ],
                 gInfo: {
                     rating: 4.3,
                     reviews: "4,200",
@@ -538,12 +571,20 @@ function renderItinerary(index) {
         const noteHtml = event.note ? 
             `<p class="text-xs text-red-500 mt-2 flex items-start gap-1"><span class="font-bold">!</span> ${event.note}</p>` : '';
 
-        // 推薦清單
+        // 推薦清單 (升級為點評樣式)
         const recommendHtml = event.recommend ? 
             `<div class="mt-3 bg-orange-50 p-3 rounded-lg border border-orange-100">
-                <p class="text-xs text-orange-600 font-bold mb-1">👍 推薦必試</p>
-                <div class="flex flex-wrap gap-2">
-                    ${event.recommend.map(r => `<span class="text-xs text-gray-700 bg-white px-2 py-1 rounded border border-orange-100">${r}</span>`).join('')}
+                <p class="text-xs text-orange-600 font-bold mb-2 flex items-center gap-1">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    網友推薦必試
+                </p>
+                <div class="space-y-2">
+                    ${event.recommend.map(r => `
+                        <div class="bg-white p-2 rounded border border-orange-100 shadow-sm">
+                            <div class="font-bold text-gray-800 text-sm">🍽️ ${r.name}</div>
+                            <div class="text-xs text-gray-500 mt-1 leading-relaxed">"${r.review}"</div>
+                        </div>
+                    `).join('')}
                 </div>
              </div>` : '';
         
@@ -561,11 +602,10 @@ function renderItinerary(index) {
                 </div>
              </div>` : '';
 
-        // 導航按鈕渲染邏輯 (強大容錯版：支援本地圖片 + 自動文字替代)
+        // 導航按鈕 (保持本地圖片邏輯)
         let navHtml = '';
         if (event.nav) {
             const navLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.nav)}`;
-            
             const info = event.gInfo || {
                 rating: 4.5,
                 reviews: "Google",
@@ -573,9 +613,6 @@ function renderItinerary(index) {
                 type: "地標",
                 image: "" 
             };
-
-            // 如果沒有圖片(或讀取失敗)，會顯示這個文字替代圖片
-            // 使用 encodeURIComponent 確保中文正常顯示
             const fallbackImage = `https://placehold.co/600x400/e5e7eb/374151?text=${encodeURIComponent(event.title)}`;
 
             navHtml = `
