@@ -1,14 +1,16 @@
-// --- 資料區 (已根據您的 Google Sheet 整理) ---
+// --- 資料區 (根據 2/7 提供的新行程更新) ---
 const itineraryData = [
     {
         date: "2/16 (一)",
-        weather: "晴時多雲 18-32°C", // 模擬天氣
+        weather: "晴時多雲 18-32°C",
         events: [
-            { time: "07:20", title: "搭乘 BR257 飛往清邁", type: "transport", note: "10:35 抵達 CNX 機場" },
-            { time: "12:00", title: "烤山尼曼 泰北咖哩麵", type: "food", location: "Khao Soi Nimman", tags: ["必吃美食", "米其林推薦"], nav: "Khao Soi Nimman" },
-            { time: "14:00", title: "小藝術村 (Baan Kang Wat)", type: "spot", location: "Baan Kang Wat", tags: ["文青必逛", "拍照"], nav: "Baan Kang Wat" },
-            { time: "16:00", title: "清邁夜間野生動物園", type: "spot", location: "Chiang Mai Night Safari", tags: ["親子推薦"], nav: "Chiang Mai Night Safari" },
-            { time: "22:00", title: "入住：清邁易思庭譚飯店", type: "stay", location: "Eastin Tan Hotel Chiang Mai", nav: "Eastin Tan Hotel Chiang Mai" }
+            { time: "07:20", title: "TPE-CNX 航班 BR257", type: "transport", note: "10:35 抵達清邁機場", nav: "Chiang Mai International Airport" },
+            { time: "11:00", title: "飯店寄放行李", type: "stay", location: "Eastin Tan Hotel", note: "僅寄放行李，還不能進房", nav: "Eastin Tan Hotel Chiang Mai" },
+            { time: "12:00", title: "清邁夫人私房菜", type: "food", location: "Baan Khun Nine Kitchen", tags: ["必吃泰北菜", "米其林推薦"], nav: "Baan Khun Nine Kitchen" },
+            { time: "14:00", title: "飯店周邊 / 自由活動", type: "relax", note: "可逛 Maya 百貨或尼曼路按摩" },
+            { time: "18:00", title: "清邁大學夜市", type: "food", location: "Malin Plaza", tags: ["學生美食", "平價服飾"], nav: "Malin Plaza" },
+            { time: "20:00", title: "自由活動 / 回飯店", type: "relax" },
+            { time: "22:00", title: "入住：清邁易思庭譚飯店", type: "stay", location: "Eastin Tan Hotel", nav: "Eastin Tan Hotel Chiang Mai" }
         ]
     },
     {
@@ -16,52 +18,80 @@ const itineraryData = [
         weather: "晴朗 19-33°C",
         events: [
             { time: "09:00", title: "飯店早餐 & 自由活動", type: "relax", note: "享受飯店設施" },
-            { time: "11:00", title: "Neng's Clay Oven 脆皮豬", type: "food", location: "Neng Earthen Jar Roast Pork", tags: ["必吃脆皮豬", "在地人推薦"], nav: "Neng Earthen Jar Roast Pork" },
-            { time: "13:00", title: "Big C Extra 採買", type: "shop", location: "Big C Extra Chiangmai 2", tags: ["伴手禮補給"], nav: "Big C Extra Chiangmai 2" },
-            { time: "17:00", title: "清邁夫人私房菜", type: "food", location: "Baan Khun Nine Kitchen", tags: ["必點泰北菜"], nav: "Baan Khun Nine Kitchen" },
-            { time: "19:00", title: "Maya 百貨 & 超市", type: "shop", location: "MAYA Lifestyle Shopping Center", tags: ["必買伴手禮"], nav: "MAYA Lifestyle Shopping Center" }
+            { time: "10:30", title: "飯店門口集合", type: "transport", note: "準備出發吃午餐" },
+            { time: "11:00", title: "烤山尼曼 泰北咖哩麵", type: "food", location: "Khao Soi Nimman", tags: ["必吃美食", "排隊名店"], nav: "Khao Soi Nimman" },
+            { time: "13:00", title: "接送前往大象行程", type: "transport", note: "13:30 出發" },
+            { time: "14:30", title: "Elfin Farm & Café", type: "spot", location: "Elfin Farm & Cafe", tags: ["親子必遊", "餵食大象", "拍照攻略"], nav: "Elfin Farm & Cafe" },
+            { time: "16:00", title: "清邁夜間野生動物園", type: "spot", location: "Chiang Mai Night Safari", tags: ["親子推薦", "夜間遊園車"], nav: "Chiang Mai Night Safari" },
+            { time: "20:30", title: "返回飯店", type: "transport" },
+            { time: "21:00", title: "自由活動", type: "relax", location: "Eastin Tan Hotel" }
         ]
     },
     {
         date: "2/18 (三)",
         weather: "多雲 20-31°C",
         events: [
-            { time: "13:00", title: "飯店接送 (大象行程)", type: "transport" },
-            { time: "14:30", title: "Elfin Farm & Café 大象體驗", type: "spot", location: "Elfin Farm & Cafe", tags: ["親子必遊", "餵食大象", "拍照攻略: 穿亮色衣服"], nav: "Elfin Farm & Cafe" },
-            { time: "20:30", title: "返回飯店休息", type: "stay", location: "Parc Borough City Resort", note: "更換飯店", nav: "Parc Borough City Resort" }
+            { time: "09:00", title: "飯店早餐 & 自由活動", type: "relax" },
+            { time: "11:30", title: "退房 & 移動", type: "transport", note: "前往下一間飯店寄放行李" },
+            { time: "12:00", title: "午餐：小藝術村周邊", type: "food", location: "Baan Kang Wat Area", nav: "Baan Kang Wat" },
+            { time: "14:00", title: "小藝術村 (Baan Kang Wat)", type: "spot", location: "Baan Kang Wat", tags: ["文青必逛", "手作市集"], nav: "Baan Kang Wat" },
+            { time: "17:00", title: "Adirak Pizza", type: "food", location: "Adirak Pizza", tags: ["知名披薩", "特色晚餐"], nav: "Adirak Pizza Chiang mai" },
+            { time: "19:00", title: "Central Chiangmai Airport", type: "shop", location: "Central Chiangmai Airport", tags: ["超市補貨", "伴手禮"], nav: "Central Chiangmai Airport" },
+            { time: "21:00", title: "入住：帕克城市度假村", type: "stay", location: "Parc Borough City Resort", note: "更換飯店", nav: "Parc Borough City Resort" }
         ]
     },
     {
         date: "2/19 (四)",
         weather: "晴朗 19-34°C",
         events: [
-            { time: "12:00", title: "小藝術村午餐", type: "food", location: "Baan Kang Wat", nav: "Baan Kang Wat" },
-            { time: "14:00", title: "迪卡儂 清邁店", type: "shop", location: "Decathlon Chiang Mai", nav: "Decathlon Chiang Mai" },
-            { time: "16:00", title: "Galangal 廚藝學校", type: "spot", location: "Galangal Cooking Studio", tags: ["親子體驗", "學做泰菜"], nav: "Galangal Cooking Studio" },
-            { time: "18:00", title: "清邁大學夜市", type: "food", location: "Malin Plaza", tags: ["學生美食", "平價服飾"], nav: "Malin Plaza" }
+            { time: "09:00", title: "飯店早餐 & 自由活動", type: "relax" },
+            { time: "11:00", title: "Neng's 脆皮豬", type: "food", location: "Neng Earthen Jar Roast Pork", tags: ["必吃脆皮豬", "在地推薦"], nav: "Neng Earthen Jar Roast Pork" },
+            { time: "13:00", title: "迪卡儂 清邁店", type: "shop", location: "Decathlon Chiang Mai", nav: "Decathlon Chiang Mai" },
+            { time: "14:00", title: "Big C Extra 2", type: "shop", location: "Big C Extra Chiangmai 2", tags: ["最後採買"], nav: "Big C Extra Chiangmai 2" },
+            { time: "15:30", title: "等待廚藝學校接送", type: "transport" },
+            { time: "16:00", title: "Galangal 廚藝學校", type: "spot", location: "Galangal Cooking Studio", tags: ["親子體驗", "學做泰菜", "包含晚餐"], nav: "Galangal Cooking Studio" },
+            { time: "20:30", title: "送回飯店休息", type: "stay", location: "Parc Borough City Resort" }
         ]
     },
     {
         date: "2/20 (五)",
-        weather: "晚間有雨 22-30°C",
+        weather: "晴時多雲 22-30°C",
         events: [
-            { time: "19:00", title: "前往機場", type: "transport" },
-            { time: "21:40", title: "搭乘 PG220 飛往曼谷", type: "transport", note: "轉機回台" }
+            { time: "09:00", title: "全日自由活動", type: "relax", note: "享受飯店設施或市區最後巡禮" },
+            { time: "19:00", title: "前往機場", type: "transport", nav: "Chiang Mai International Airport" },
+            { time: "21:40", title: "CNX-BKK 航班 PG220", type: "transport", note: "23:05 抵達曼谷轉機", tags: ["轉機注意"] }
+        ]
+    },
+    {
+        date: "2/21 (六)",
+        weather: "返台",
+        events: [
+            { time: "02:15", title: "BKK-TPE 航班 BR206", type: "transport", note: "從曼谷起飛" },
+            { time: "06:50", title: "抵達桃園機場", type: "transport", note: "溫暖的家" }
         ]
     }
 ];
 
 const infoData = {
-    flights: ["BR257 TPE-CNX 07:20-10:35", "PG220 CNX-BKK 21:40-23:05", "BR206 BKK-TPE 02:15-06:50"],
+    flights: [
+        "2/16 BR257 TPE-CNX 07:20-10:35", 
+        "2/20 PG220 CNX-BKK 21:40-23:05", 
+        "2/21 BR206 BKK-TPE 02:15-06:50"
+    ],
     hotels: [
-        { name: "Eastin Tan Hotel", address: "近尼曼路, Maya對面" },
-        { name: "Parc Borough City Resort", address: "近機場, 度假風" }
+        { name: "Eastin Tan Hotel", address: "Maya 百貨對面, 尼曼區", tel: "請查看訂房憑證" },
+        { name: "Parc Borough City Resort", address: "近機場, Mahidol Rd", tel: "請查看訂房憑證" }
     ],
     emergency: ["觀光警察: 1155", "救護車: 1669", "駐泰代表處: +66-2-119-3555"],
-    tips: ["電壓 220V (插座通用)", "小費：按摩約 50-100 泰銖", "交通：Grab 最好用"]
+    tips: [
+        "換匯：Superrich (橘色/綠色) 匯率較佳",
+        "交通：下載 Grab App 叫車最方便",
+        "小費：按摩約 50-100 泰銖，床頭小費 20 泰銖",
+        "電壓：220V (台灣電器插頭通常可通用，注意吹風機)"
+    ]
 };
 
-// --- 邏輯區 ---
+// --- 邏輯區 (與之前相同，無需變動) ---
 
 let currentDayIndex = 0;
 
@@ -70,7 +100,6 @@ function init() {
     renderItinerary(0);
 }
 
-// 渲染日期選擇器
 function renderDateSelector() {
     const container = document.getElementById('date-selector');
     container.innerHTML = itineraryData.map((day, index) => `
@@ -81,11 +110,9 @@ function renderDateSelector() {
     `).join('');
 }
 
-// 渲染當日行程
 function renderItinerary(index) {
     currentDayIndex = index;
     
-    // 更新日期按鈕樣式
     document.querySelectorAll('.date-btn').forEach(btn => {
         if(parseInt(btn.dataset.index) === index) {
             btn.className = "whitespace-nowrap px-4 py-1.5 rounded-full text-sm font-medium transition-colors bg-gray-800 text-white date-btn";
@@ -97,34 +124,36 @@ function renderItinerary(index) {
     const container = document.getElementById('app-container');
     const day = itineraryData[index];
 
-    // 天氣區塊
-    let html = `
-        <div class="bg-blue-50 p-4 rounded-xl flex items-center justify-between mb-4 border border-blue-100">
-            <div>
-                <p class="text-xs text-blue-500 font-bold tracking-wider">WEATHER</p>
-                <p class="text-lg font-medium text-gray-700">${day.weather}</p>
+    // 只有在非返台日顯示天氣
+    let weatherHtml = '';
+    if (day.weather !== "返台") {
+        weatherHtml = `
+            <div class="bg-blue-50 p-4 rounded-xl flex items-center justify-between mb-4 border border-blue-100">
+                <div>
+                    <p class="text-xs text-blue-500 font-bold tracking-wider">WEATHER</p>
+                    <p class="text-lg font-medium text-gray-700">${day.weather}</p>
+                </div>
+                <div class="text-2xl">🌤️</div>
             </div>
-            <div class="text-2xl">🌤️</div>
-        </div>
-    `;
+        `;
+    }
 
-    // 行程卡片
+    let html = weatherHtml;
+
     html += day.events.map(event => {
-        // 分類顏色與圖示
         let typeColor = "bg-white";
         let icon = "📍";
         if(event.type === 'food') { icon = "🍜"; }
         else if(event.type === 'transport') { icon = "🚗"; }
         else if(event.type === 'stay') { icon = "🏨"; }
         else if(event.type === 'shop') { icon = "🛍️"; }
+        else if(event.type === 'relax') { icon = "☕"; }
 
-        // 標籤 HTML
         const tagsHtml = event.tags ? 
             `<div class="mt-2 flex flex-wrap gap-1">
                 ${event.tags.map(t => `<span class="px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-md font-medium">${t}</span>`).join('')}
              </div>` : '';
 
-        // 導航按鈕
         const navHtml = event.nav ? 
             `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.nav)}" target="_blank" 
                 class="mt-3 block w-full text-center bg-gray-800 text-white py-2 rounded-lg text-sm font-bold shadow-md active:bg-gray-700 transition-colors flex items-center justify-center gap-2">
@@ -152,7 +181,6 @@ function renderItinerary(index) {
     container.innerHTML = html;
 }
 
-// 切換分頁
 function switchView(view) {
     const container = document.getElementById('app-container');
     const tabItinerary = document.getElementById('tab-itinerary');
@@ -173,19 +201,18 @@ function switchView(view) {
         tabItinerary.classList.add('text-gray-400');
         header.classList.add('hidden');
         
-        // 渲染資訊頁
         container.innerHTML = `
             <div class="space-y-6 pt-4">
                 <section>
                     <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">航班資訊</h3>
                     <div class="bg-white p-4 rounded-xl card-shadow text-sm space-y-2">
-                        ${infoData.flights.map(f => `<div class="flex items-center gap-2">✈️ ${f}</div>`).join('')}
+                        ${infoData.flights.map(f => `<div class="flex items-center gap-2"><span class="text-lg">✈️</span> ${f}</div>`).join('')}
                     </div>
                 </section>
                 <section>
                     <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">住宿資訊</h3>
                     <div class="bg-white p-4 rounded-xl card-shadow text-sm space-y-3">
-                        ${infoData.hotels.map(h => `<div><div class="font-bold text-gray-800">${h.name}</div><div class="text-gray-500 text-xs">${h.address}</div></div>`).join('')}
+                        ${infoData.hotels.map(h => `<div><div class="font-bold text-gray-800 text-base">${h.name}</div><div class="text-gray-500 text-xs mt-1">${h.address}</div></div>`).join('<hr class="my-2 border-gray-100">')}
                     </div>
                 </section>
                 <section>
@@ -194,16 +221,3 @@ function switchView(view) {
                         ${infoData.emergency.map(e => `<div>${e}</div>`).join('')}
                     </div>
                 </section>
-                <section>
-                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">貼心提醒</h3>
-                    <div class="bg-white p-4 rounded-xl card-shadow text-sm space-y-2">
-                        ${infoData.tips.map(t => `<div class="flex items-start gap-2"><span class="text-yellow-500">💡</span> ${t}</div>`).join('')}
-                    </div>
-                </section>
-            </div>
-        `;
-    }
-}
-
-// 啟動
-init();
