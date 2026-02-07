@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 });
 
-// --- 資料區 (改用 Wikimedia 真實地標圖 + Pexels 穩定圖) ---
+// --- 資料區 (本地圖片版) ---
 const itineraryData = [
     {
         date: "2/16 (一)",
@@ -19,8 +19,7 @@ const itineraryData = [
                     reviews: "2,400",
                     price: "交通",
                     type: "國際機場",
-                    // 維基百科：清邁機場真實外觀
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chiang_Mai_International_Airport_2013.jpg/640px-Chiang_Mai_International_Airport_2013.jpg"
+                    image: "./airport.jpg" // 對應你上傳的檔名
                 },
                 nav: "Chiang Mai International Airport" 
             },
@@ -36,8 +35,7 @@ const itineraryData = [
                     reviews: "1,800",
                     price: "฿2,500+",
                     type: "四星級飯店",
-                    // Pexels: 現代飯店示意圖
-                    image: "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./hotel1.jpg"
                 },
                 nav: "Eastin Tan Hotel Chiang Mai" 
             },
@@ -54,8 +52,7 @@ const itineraryData = [
                     reviews: 324,
                     price: "฿400-600",
                     type: "家庭餐廳",
-                    // Pexels: 泰式餐廳氛圍
-                    image: "https://images.pexels.com/photos/5946608/pexels-photo-5946608.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./food_mrs.jpg"
                 },
                 nav: "Baan Khun Nine Kitchen" 
             },
@@ -70,8 +67,7 @@ const itineraryData = [
                     reviews: "21,000",
                     price: "免費",
                     type: "購物中心",
-                    // 維基百科：Maya 百貨真實外觀
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MAYA_Lifestyle_Shopping_Center_Chiang_Mai.jpg/640px-MAYA_Lifestyle_Shopping_Center_Chiang_Mai.jpg"
+                    image: "./shop_maya.jpg"
                 },
                 nav: "MAYA Lifestyle Shopping Center" 
             },
@@ -88,8 +84,7 @@ const itineraryData = [
                     reviews: "1.2萬",
                     price: "฿100-200",
                     type: "夜市",
-                    // Pexels: 熱鬧夜市
-                    image: "https://images.pexels.com/photos/939829/pexels-photo-939829.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./nightmarket.jpg"
                 },
                 nav: "Malin Plaza" 
             },
@@ -109,8 +104,7 @@ const itineraryData = [
                     reviews: "1,800",
                     price: "฿2,500+",
                     type: "四星級飯店",
-                    // Pexels: 舒適房間
-                    image: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./hotel1.jpg"
                 },
                 nav: "Eastin Tan Hotel Chiang Mai",
                 desc: "正式 Check-in 進房。飯店早餐評價很好。",
@@ -152,8 +146,7 @@ const itineraryData = [
                     reviews: "5,800",
                     price: "฿100-300",
                     type: "泰北餐廳",
-                    // 維基百科：真實的泰北咖哩麵 (Khao Soi)
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Khao_soi_kai.jpg/640px-Khao_soi_kai.jpg"
+                    image: "./food_khaosoi.jpg"
                 },
                 nav: "Khao Soi Nimman" 
             },
@@ -176,8 +169,7 @@ const itineraryData = [
                     reviews: 156,
                     price: "行程",
                     type: "大象體驗",
-                    // Pexels: 大象
-                    image: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./elephant.jpg"
                 },
                 nav: "Elfin Farm & Cafe" 
             },
@@ -193,8 +185,7 @@ const itineraryData = [
                     reviews: "8,900",
                     price: "門票",
                     type: "動物園",
-                    // Pexels: 斑馬 (動物園感)
-                    image: "https://images.pexels.com/photos/802112/pexels-photo-802112.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./zoo.jpg"
                 },
                 nav: "Chiang Mai Night Safari" 
             },
@@ -240,8 +231,7 @@ const itineraryData = [
                     reviews: "1,200",
                     price: "฿200-400",
                     type: "藝術聚落",
-                    // Pexels: 戶外綠植咖啡
-                    image: "https://images.pexels.com/photos/1109197/pexels-photo-1109197.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./art.jpg"
                 },
                 nav: "Baan Kang Wat" 
             },
@@ -258,8 +248,7 @@ const itineraryData = [
                     reviews: "1,200",
                     price: "免費",
                     type: "文創園區",
-                    // Pexels: 文創/手作
-                    image: "https://images.pexels.com/photos/4552353/pexels-photo-4552353.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./art.jpg"
                 },
                 nav: "Baan Kang Wat" 
             },
@@ -276,8 +265,7 @@ const itineraryData = [
                     reviews: 890,
                     price: "฿300-500",
                     type: "披薩餐廳",
-                    // Pexels: 美味披薩
-                    image: "https://images.pexels.com/photos/1049620/pexels-photo-1049620.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./food_pizza.jpg"
                 },
                 nav: "Adirak Pizza Chiang mai" 
             },
@@ -293,8 +281,7 @@ const itineraryData = [
                     reviews: "15,000",
                     price: "฿฿",
                     type: "購物中心",
-                    // Pexels: 購物中心內部
-                    image: "https://images.pexels.com/photos/1666067/pexels-photo-1666067.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./shop_central.jpg"
                 },
                 nav: "Central Chiangmai Airport" 
             },
@@ -308,8 +295,7 @@ const itineraryData = [
                     reviews: "950",
                     price: "฿3,000+",
                     type: "度假村",
-                    // Pexels: 度假村泳池
-                    image: "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./hotel2.jpg"
                 },
                 nav: "Parc Borough City Resort",
                 desc: "入住第二間飯店。這間走度假村風格，比較安靜。",
@@ -344,8 +330,7 @@ const itineraryData = [
                     reviews: "2,100",
                     price: "฿100-200",
                     type: "泰式小吃",
-                    // 維基百科：真實的脆皮燒肉 (Siu Yuk)
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Siu_yuk.jpg/640px-Siu_yuk.jpg"
+                    image: "./food_neng.jpg"
                 },
                 nav: "Neng Earthen Jar Roast Pork" 
             },
@@ -360,8 +345,7 @@ const itineraryData = [
                     reviews: "350",
                     price: "฿฿",
                     type: "運動用品",
-                    // Pexels: 運動用品店
-                    image: "https://images.pexels.com/photos/2385477/pexels-photo-2385477.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./shop_decathlon.jpg"
                 },
                 nav: "Decathlon Chiang Mai" 
             },
@@ -377,8 +361,7 @@ const itineraryData = [
                     reviews: "4,200",
                     price: "฿฿",
                     type: "大賣場",
-                    // Pexels: 超市貨架
-                    image: "https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./shop_bigc.jpg"
                 },
                 nav: "Big C Extra Chiangmai 2" 
             },
@@ -400,8 +383,7 @@ const itineraryData = [
                     reviews: "920",
                     price: "行程",
                     type: "廚藝學校",
-                    // Pexels: 廚藝教室
-                    image: "https://images.pexels.com/photos/2284166/pexels-photo-2284166.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    image: "./cooking.jpg"
                 },
                 nav: "Galangal Cooking Studio" 
             },
@@ -442,8 +424,7 @@ const itineraryData = [
                     reviews: "2,400",
                     price: "交通",
                     type: "國際機場",
-                    // 維基百科：清邁機場
-                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Chiang_Mai_International_Airport_2013.jpg/640px-Chiang_Mai_International_Airport_2013.jpg"
+                    image: "./airport.jpg"
                 },
                 nav: "Chiang Mai International Airport" 
             },
@@ -580,24 +561,22 @@ function renderItinerary(index) {
                 </div>
              </div>` : '';
 
-        // 導航按鈕渲染邏輯 (多重備用機制)
+        // 導航按鈕渲染邏輯 (強大容錯版：支援本地圖片 + 自動文字替代)
         let navHtml = '';
         if (event.nav) {
             const navLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.nav)}`;
             
-            // 決定備用圖片 (根據類型分配不同圖片，避免全部變成同一張海灘)
-            let fallbackImage = "https://images.pexels.com/photos/1552465011/pexels-photo-1552465011.jpeg?auto=compress&cs=tinysrgb&w=600"; // 預設風景
-            if (event.type === 'food') fallbackImage = "https://images.pexels.com/photos/5946608/pexels-photo-5946608.jpeg?auto=compress&cs=tinysrgb&w=600";
-            if (event.type === 'stay') fallbackImage = "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600";
-            if (event.type === 'shop') fallbackImage = "https://images.pexels.com/photos/1666067/pexels-photo-1666067.jpeg?auto=compress&cs=tinysrgb&w=600";
-
             const info = event.gInfo || {
                 rating: 4.5,
                 reviews: "Google",
                 price: "前往",
                 type: "地標",
-                image: fallbackImage
+                image: "" 
             };
+
+            // 如果沒有圖片(或讀取失敗)，會顯示這個文字替代圖片
+            // 使用 encodeURIComponent 確保中文正常顯示
+            const fallbackImage = `https://placehold.co/600x400/e5e7eb/374151?text=${encodeURIComponent(event.title)}`;
 
             navHtml = `
             <a href="${navLink}" target="_blank" class="block mt-4 no-underline group">
@@ -606,7 +585,6 @@ function renderItinerary(index) {
                         src="${info.image}" 
                         class="w-1/3 h-full object-cover bg-gray-200" 
                         alt="${event.title}" 
-                        referrerpolicy="no-referrer"
                         onerror="this.onerror=null; this.src='${fallbackImage}'"
                     >
                     <div class="w-2/3 p-3 flex flex-col justify-between relative">
