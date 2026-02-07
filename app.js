@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 });
 
-// --- 資料區 (新增網友真實點評) ---
+// --- 資料區 ---
 const itineraryData = [
     {
         date: "2/16 (一)",
@@ -46,7 +46,6 @@ const itineraryData = [
                 location: "Baan Khun Nine Kitchen", 
                 tags: ["必吃泰北菜", "米其林推薦"], 
                 desc: "環境舒適的玻璃屋餐廳，口味正宗且乾淨，非常適合長輩。",
-                // 新增點評
                 recommend: [
                     { name: "泰北杭勒咖哩", review: "肉燉得軟爛入味，帶點薑絲香氣，超級下飯。" },
                     { name: "泰北番茄肉醬", review: "酸甜開胃，像是泰式肉燥，配生菜吃很清爽。" },
@@ -100,7 +99,7 @@ const itineraryData = [
             { 
                 time: "20:00", 
                 title: "自由行動 / 回飯店", 
-                type: "relax",
+                type: "relax", 
                 desc: "可選擇繼續逛夜市，或先回飯店休息。"
             },
             { 
@@ -492,6 +491,27 @@ const infoData = {
         "交通：下載 Grab App 叫車最方便",
         "小費：按摩約 50-100 泰銖，床頭小費 20 泰銖",
         "電壓：220V (插座通用)"
+    ],
+    // 新增：預約連結與攻略
+    links: [
+        {
+            title: "精靈農場 & 清邁夜間野生動物園",
+            desc: "KKday 半日遊預約 | 已包含接送",
+            url: "https://www.kkday.com/zh-tw/product/287771",
+            image: "./kkday_safari.jpg"
+        },
+        {
+            title: "Galangal 廚藝學校",
+            desc: "KKday 泰菜課程預約 | 含市場導覽",
+            url: "https://www.kkday.com/zh-tw/product/23087-galangal-cooking-studio-in-chiang-mai-thailand",
+            image: "./kkday_cooking.jpg"
+        },
+        {
+            title: "Baan Kang Wat 藝術村攻略",
+            desc: "森林系手作藝術村 | 咖啡、雜貨、小吃",
+            url: "https://www.travelerluxe.com/article/desc/230009060",
+            image: "./article_art.jpg"
+        }
     ]
 };
 
@@ -571,7 +591,7 @@ function renderItinerary(index) {
         const noteHtml = event.note ? 
             `<p class="text-xs text-red-500 mt-2 flex items-start gap-1"><span class="font-bold">!</span> ${event.note}</p>` : '';
 
-        // 推薦清單 (升級為點評樣式)
+        // 推薦清單 (點評版)
         const recommendHtml = event.recommend ? 
             `<div class="mt-3 bg-orange-50 p-3 rounded-lg border border-orange-100">
                 <p class="text-xs text-orange-600 font-bold mb-2 flex items-center gap-1">
@@ -602,7 +622,7 @@ function renderItinerary(index) {
                 </div>
              </div>` : '';
 
-        // 導航按鈕 (保持本地圖片邏輯)
+        // 導航按鈕 (本地圖片 + 替代文字)
         let navHtml = '';
         if (event.nav) {
             const navLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.nav)}`;
@@ -689,8 +709,29 @@ window.switchView = function(view) {
         tabItinerary.classList.add('text-gray-400');
         if(header) header.classList.add('hidden');
         
+        // 渲染資訊頁 (新增預約連結區塊)
         container.innerHTML = `
             <div class="space-y-6 pt-4">
+                <section>
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">📌 行程預約與攻略</h3>
+                    <div class="space-y-3">
+                        ${infoData.links.map(link => `
+                            <a href="${link.url}" target="_blank" class="block bg-white rounded-xl card-shadow overflow-hidden group">
+                                <div class="flex h-24">
+                                    <img src="${link.image}" class="w-1/3 object-cover bg-gray-100" alt="${link.title}" onerror="this.src='https://placehold.co/200?text=Link'">
+                                    <div class="w-2/3 p-3 flex flex-col justify-center">
+                                        <h4 class="font-bold text-gray-800 text-sm mb-1 group-hover:text-blue-600 transition-colors line-clamp-1">${link.title}</h4>
+                                        <p class="text-xs text-gray-500 line-clamp-2">${link.desc}</p>
+                                        <div class="mt-2 text-xs text-blue-500 flex items-center gap-1 font-medium">
+                                            點擊查看 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </section>
+
                 <section>
                     <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">航班資訊</h3>
                     <div class="bg-white p-4 rounded-xl card-shadow text-sm space-y-2">
