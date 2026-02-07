@@ -228,21 +228,41 @@ const infoData = {
     ]
 };
 
-// --- 新增：伴手禮資料 (來自 CSV) ---
+// --- 新增：完整 30 項伴手禮資料 ---
 const souvenirData = [
     // 零食類
-    { id: "omi1", name: "Pretz（泰國限定）", category: "零食", desc: "打拋豬、酸辣湯、綠咖哩口味鹹香涮嘴，超適合當下酒菜。" },
+    { id: "omi1", name: "Pretz（泰國限定）", category: "零食", desc: "打拋豬肉、泰式酸辣湯、綠咖哩和烤玉米等等，鹹香涮嘴、超適合當下酒菜。" },
     { id: "omi2", name: "Pocky（泰國限定）", category: "零食", desc: "芒果口味甜而不膩，香蕉口味香濃滑順，像在熱帶度假！" },
-    { id: "omi3", name: "MAG MAG 還魂梅", category: "零食", desc: "酸甜濃郁，吃一顆解嘴饞又提神，真的像會回魂一樣。" },
-    { id: "omi4", name: "小熊餅乾（限定）", category: "零食", desc: "泰國本土風景包裝超可愛，有巧克力香蕉、鳳梨、芒果口味。" },
-    { id: "omi5", name: "樂事洋芋片", category: "零食", desc: "香烤魷魚、打拋葉、鹹蛋黃等特色口味，還有二合一沾醬版。" },
-    { id: "omi6", name: "Taro 鱈魚絲", category: "零食", desc: "口感紮實有魚香，有原味、辣味、BBQ等多種選擇。" },
+    { id: "omi3", name: "MAG MAG 還魂梅", category: "零食", desc: "酸酸甜甜，梅子的香氣濃郁得像回魂，解嘴饞又提神。" },
+    { id: "omi4", name: "小熊餅乾（限定）", category: "零食", desc: "巧克力香蕉、鳳梨和芒果口味，包裝融入泰國風景超可愛。" },
+    { id: "omi5", name: "樂事洋芋片", category: "零食", desc: "香烤魷魚、打拋葉、鹹蛋黃等特色口味，還有烤大頭蝦沾醬二合一版本。" },
+    { id: "omi6", name: "Taro 鱈魚絲", category: "零食", desc: "口感紮實，帶有自然魚香和微微鹹味，味道相當有層次。" },
+    { id: "omi7", name: "Doi Kham 果乾", category: "零食", desc: "皇家計畫農產品，低溫烘乾保留天然香氣，口感Q彈不黏牙。" },
+    { id: "omi8", name: "手標泰奶茶茶葉", category: "零食", desc: "路邊攤最常用！紅色原味、金色加濃、綠色奶綠，茶香濃厚。" },
+    { id: "omi9", name: "Bento 魷魚片", category: "零食", desc: "香辣過癮！藍色最不辣，紅色中辣，其他更辣，嚼勁十足。" },
+    { id: "omi10", name: "小老闆海苔", category: "零食", desc: "油炸海苔香酥脆口，鹹蛋黃等限定口味必試，配飯當零食都好。" },
+    { id: "omi11", name: "COCO Milk 芒果乾", category: "零食", desc: "芒果乾酸甜結合椰奶香甜，味道就像在吃芒果糯米飯！" },
+    { id: "omi12", name: "Koh-Kae 堅果", category: "零食", desc: "大哥花生豆！泰式酸辣湯、芥末、BBQ等口味，下酒追劇神物。" },
+    { id: "omi13", name: "The GoldGreen 山竹乾", category: "零食", desc: "隨時想吃就吃！解決新鮮山竹不能帶回國的遺憾。" },
+    { id: "omi14", name: "椰子脆捲", category: "零食", desc: "酥脆不油，原味椰香自然，也有香蘭、榴槤口味，獨立包裝好分送。" },
+    { id: "omi26", name: "Max Oceans 炸雞皮", category: "零食", desc: "乾爽不油膩，雖然比現炸硬一點，但作為下酒菜非常合適。" },
     { id: "omi27", name: "Oyawa 酥炸蝦下巴", category: "零食", desc: "人氣爆增！酸辣湯、麻辣BBQ口味，酥脆到一口接一口。" },
     { id: "omi28", name: "Hartbeat 心型糖", category: "零食", desc: "愛心造型超受歡迎，有草莓、荔枝、蛇皮果等特殊口味。" },
-    // 藥妝類
+    
+    // 藥妝 & 生活用品類
     { id: "omi15", name: "Dentiste 夜用牙膏", category: "藥妝", desc: "Lisa代言！含天然植物精華，預防口腔細菌，早上口氣清新。" },
     { id: "omi16", name: "ROJUKISS 面膜", category: "藥妝", desc: "精華液滿滿，主打深層保濕修護，泰國美妝控首選。" },
-    { id: "omi17", name: "BIO 髮膜", category: "藥妝", desc: "泰國女生護髮秘訣，天然成分修護受損髮質。" }
+    { id: "omi17", name: "BIO 髮膜", category: "藥妝", desc: "泰國女生護髮秘訣，天然成分修護受損髮質，洗完超滑順。" },
+    { id: "omi18", name: "Propoliz 蜂膠噴霧", category: "藥妝", desc: "喉嚨守護小物！天然蜂膠溫和護嗓，舒緩喉嚨不適。" },
+    { id: "omi19", name: "蛇牌爽身粉/噴霧", category: "藥妝", desc: "經典涼感！炎熱天氣灑在身上瞬間乾爽，還有薰衣草等香味。" },
+    { id: "omi20", name: "Soffell 驅蚊液", category: "藥妝", desc: "泰國驅蚊聖品，天然萃取成分，防蚊效果持久，有柑橘和玫瑰香。" },
+    { id: "omi21", name: "凡士林美白乳液", category: "藥妝", desc: "泰國限定！含10倍美白成分，保濕效果好，讓皮膚變白更亮。" },
+    { id: "omi22", name: "ele 晚安面膜", category: "藥妝", desc: "睡前敷一下，保水感不錯，早上起床皮膚水嫩。" },
+    { id: "omi23", name: "皇家足貼", category: "藥妝", desc: "貼在腳底吸出濕氣，緩解疲勞，隔天撕下來會看到濕濕的。" },
+    { id: "omi24", name: "雙頭薄荷吸鼻劑", category: "藥妝", desc: "開車想睡或鼻子不通時吸一下，瞬間提神醒腦，家家戶戶必備。" },
+    { id: "omi25", name: "voodoo 黑蛇毒面膜", category: "藥妝", desc: "含有蛇毒血清蛋白成分，幫助收縮毛孔，緊緻膚質。" },
+    { id: "omi29", name: "LA GLACE 腮黑膏", category: "藥妝", desc: "黑色膏體擦在臉上變粉色！隨體溫變色，打造光澤澎潤感。" },
+    { id: "omi30", name: "LA GLACE 迷你遮瑕", category: "藥妝", desc: "網紅推薦！便利商店買得到的迷你彩妝，好用且新鮮。" }
 ];
 
 // --- 邏輯區 ---
@@ -395,11 +415,10 @@ window.switchView = function(view) {
         header.classList.remove('hidden');
         renderItinerary(currentDayIndex);
     } else if (view === 'shopping') {
-        // --- 新增：伴手禮分頁渲染邏輯 ---
         header.classList.add('hidden');
         container.innerHTML = `
             <div class="pt-2 pb-6 space-y-6">
-                <h2 class="text-xl font-bold text-gray-800 px-2 flex items-center gap-2">🛒 必買清單 <span class="text-xs font-normal text-gray-400 bg-gray-100 px-2 py-1 rounded-full">記得截圖</span></h2>
+                <h2 class="text-xl font-bold text-gray-800 px-2 flex items-center gap-2">🛒 必買清單 <span class="text-xs font-normal text-gray-400 bg-gray-100 px-2 py-1 rounded-full">共 ${souvenirData.length} 項</span></h2>
                 
                 <div class="mb-6">
                     <h3 class="px-2 text-sm font-bold text-orange-500 mb-3 uppercase tracking-wider">泰國限定零食</h3>
@@ -407,7 +426,7 @@ window.switchView = function(view) {
                         ${souvenirData.filter(i => i.category === '零食').map(item => `
                             <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
                                 <div class="h-32 bg-gray-100 overflow-hidden relative">
-                                    <img src="./${item.id}.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300?text=${item.name}'">
+                                    <img src="./${item.id}.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300?text=${encodeURIComponent(item.name)}'">
                                 </div>
                                 <div class="p-3 flex-1 flex flex-col">
                                     <h4 class="font-bold text-gray-800 text-sm mb-1">${item.name}</h4>
@@ -419,12 +438,12 @@ window.switchView = function(view) {
                 </div>
 
                 <div>
-                    <h3 class="px-2 text-sm font-bold text-blue-500 mb-3 uppercase tracking-wider">必掃藥妝</h3>
+                    <h3 class="px-2 text-sm font-bold text-blue-500 mb-3 uppercase tracking-wider">必掃藥妝 & 生活小物</h3>
                     <div class="grid grid-cols-2 gap-3">
                         ${souvenirData.filter(i => i.category === '藥妝').map(item => `
                             <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
                                 <div class="h-32 bg-gray-100 overflow-hidden relative">
-                                    <img src="./${item.id}.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300?text=${item.name}'">
+                                    <img src="./${item.id}.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300?text=${encodeURIComponent(item.name)}'">
                                 </div>
                                 <div class="p-3 flex-1 flex flex-col">
                                     <h4 class="font-bold text-gray-800 text-sm mb-1">${item.name}</h4>
