@@ -28,11 +28,15 @@
     <main id="app-container" class="flex-1 overflow-y-auto p-4 space-y-4 pb-24">
         </main>
 
-    <nav class="bg-white border-t border-gray-100 fixed bottom-0 w-full pb-safe-area">
+    <nav class="bg-white border-t border-gray-100 fixed bottom-0 w-full pb-safe-area z-50">
         <div class="flex justify-around items-center h-16">
             <button onclick="switchView('itinerary')" id="tab-itinerary" class="tab-btn active-tab flex-1 h-full flex flex-col items-center justify-center text-xs text-gray-500">
                 <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
                 行程
+            </button>
+            <button onclick="switchView('shopping')" id="tab-shopping" class="tab-btn flex-1 h-full flex flex-col items-center justify-center text-xs text-gray-400">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                必買
             </button>
             <button onclick="switchView('info')" id="tab-info" class="tab-btn flex-1 h-full flex flex-col items-center justify-center text-xs text-gray-400">
                 <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
